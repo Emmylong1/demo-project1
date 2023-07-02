@@ -1,4 +1,3 @@
-#!/usr/bin/env groovy
 pipeline {
     agent any
     environment {
@@ -7,20 +6,21 @@ pipeline {
         AWS_DEFAULT_REGION = "us-east-1"
     }
 
-
     stages {
         stage("Git checkout") {
             steps {
                 git branch: 'main', url: 'https://github.com/Emmylong1/demo-project1.git'
             }
+        }
 
         stage("Create terraform resources") {
             steps {
-                     script {
-                        sh "terraform init"
-                        sh "terraform apply -auto-approve
+                script {
+                    sh "terraform init"
+                    sh "terraform apply -auto-approve"
                 }
             }
         }
-    }   
-} 
+    }
+}
+
