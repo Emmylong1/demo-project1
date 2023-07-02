@@ -7,11 +7,10 @@ pipeline {
         AWS_DEFAULT_REGION = "us-east-1"
     }
     stages {
-        stage("Create an EKS Cluster") {
+        stage("Create terraform resources") {
             steps {
- 
-                       script {
-                    dir('DEMO-PROJECT1') {
+                     script {
+                         dir('demo-project1') {
                         sh "terraform init"
                         sh "terraform apply -auto-approve"
                     }
